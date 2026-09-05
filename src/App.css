@@ -1,0 +1,194 @@
+:root {
+  --text: #7f8c8d;
+  --heading: #233140;
+  --link: #2980b9;
+  --link-underline: #e7f2fa;
+  --link-hover: #94c6e7;
+}
+
+* {
+  box-sizing: border-box;
+  position: relative;
+}
+
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 200;
+  color: var(--text);
+  letter-spacing: -0.04em;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.profile {
+  background-image: url('./assets/images/profile.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.profile img {
+  display: none;
+}
+
+.article {
+  background: rgba(255, 255, 255, 0.7);
+  flex-basis: 57vw;
+  padding: 6vw;
+  z-index: 1;
+  min-height: 100vh;
+}
+
+.greeting {
+  font-size: 2.5vw;
+  line-height: 0.75;
+  margin: 0 0 0.5em;
+  font-weight: 200;
+}
+
+.name {
+  color: var(--heading);
+  font-weight: 300;
+  font-size: 4.4vw;
+  margin: 0 0 3vw;
+}
+
+.message {
+  font-size: 2.5vw;
+  line-height: 1.4;
+  margin: 0 0 4vw;
+  font-weight: 200;
+}
+
+.message a {
+  color: var(--link);
+  text-decoration: none;
+  border-bottom: 0.15vw solid var(--link-underline);
+  transition: border-color 0.1s ease-in-out;
+}
+
+.message a:hover {
+  border-color: var(--link-hover);
+}
+
+.instagram {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: -0.5vw;
+}
+
+.instagram:hover a {
+  opacity: 0.8;
+}
+
+.instagram a {
+  flex-grow: 1;
+  flex-basis: calc(100% / 3);
+  line-height: 0;
+  transition: opacity 0.2s ease-in-out;
+  border: 0.5vw solid transparent;
+}
+
+.instagram a:hover {
+  opacity: 1;
+}
+
+.instagram img {
+  width: 100%;
+  display: block;
+}
+
+/* Tablet */
+@media screen and (max-width: 1050px) {
+  .instagram a {
+    flex-basis: calc(100% / 2);
+  }
+}
+
+/* Mobile — stack profile above article */
+@media screen and (max-width: 900px) {
+  body {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .profile {
+    position: relative;
+    background: none;
+    margin-bottom: -15vw;
+    z-index: 0;
+  }
+  .profile::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 60%, #fff);
+    pointer-events: none;
+  }
+  .profile img {
+    display: block;
+    width: 100%;
+  }
+  .article {
+    padding: 6vw;
+    flex: 0;
+    background: none;
+    min-height: auto;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .instagram a {
+    flex-basis: calc(100% / 4);
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .instagram a {
+    flex-basis: calc(100% / 3);
+  }
+}
+
+/* Small mobile — readable text sizes */
+@media screen and (max-width: 600px) {
+  .article {
+    padding-bottom: 0;
+  }
+  .greeting {
+    font-size: 1.1em;
+  }
+  .name {
+    font-size: 1.9em;
+  }
+  .message {
+    font-size: 1.1em;
+    margin-bottom: 6vw;
+  }
+  .instagram {
+    margin-top: -6px;
+    margin-left: -5.5vw;
+    margin-right: -5.5vw;
+  }
+}
+
+/* Large screens */
+@media screen and (min-width: 1450px) {
+  .instagram a {
+    flex-basis: calc(100% / 4);
+  }
+}
